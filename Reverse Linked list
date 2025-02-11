@@ -1,0 +1,38 @@
+Aim:Operating System-Based Question:
+This experiment combines data structures and operating system concepts, focusing on Linked Lists and OS-related problems.
+Objective:
+To understand the implementation and operations of Linked Lists while exploring their applications in Operating System concepts such as memory management, scheduling, and resource allocation.
+Author: Saksham
+UID: 22BET10003
+
+Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        ListNode* prev = nullptr;
+        ListNode* current = head;
+        
+        while (current != nullptr) {
+            // Store next node
+            ListNode* next = current->next;
+            
+            // Reverse the link
+            current->next = prev;
+            
+            // Move prev and current one step forward
+            prev = current;
+            current = next;
+        }
+        
+        // prev is the new head
+        return prev;
+    }
+};

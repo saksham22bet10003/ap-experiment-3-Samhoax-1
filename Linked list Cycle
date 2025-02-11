@@ -1,0 +1,36 @@
+// Saksham, 22BET10003
+#include <iostream>
+using namespace std;
+
+// Definition for singly-linked list.
+class ListNode {
+public:
+    int val;
+    ListNode *next;
+    
+    // Constructor
+    ListNode(int x) {
+        val = x;
+        next = NULL;
+    }
+};
+Aim:Operating System-Based Question:
+This experiment combines data structures and operating system concepts, focusing on Linked Lists and OS-related problems.
+Objective: The program detects cycles in a linked list using Floyd’s Cycle Detection Algorithm (slow and fast pointer approach) to efficiently determine if a node is revisited.
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+        if (!head || !head->next) return false; 
+        
+        ListNode *slow = head, *fast = head;
+        
+        while (fast && fast->next) {
+            slow = slow->next;       // Move slow pointer by 1 step
+            fast = fast->next->next; // Move fast pointer by 2 steps
+            
+            if (slow == fast) return true; // Cycle detected
+        }
+        
+        return false; // No cycle found
+    }
+};
